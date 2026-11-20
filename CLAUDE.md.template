@@ -1,0 +1,70 @@
+# <Project name>: notes for Claude
+
+<Two to four lines: what the product is, who it is for, and the reference it is modelled on. The owner's own words for
+what it is, with the date.>
+
+**The owner's goals for the product:** <the owner's words, dated>. Recommendations follow from these goals; a bar is
+never lowered to get a pass.
+
+## Status
+**What is in hand right now, piece by piece, with who has it and where its files are: [reports/Work
+inventory.md](reports/Work%20inventory.md).** Read it after this file when picking the work up. Its rule: work is written
+into it the moment it is asked for or handed over, with who has it and what was asked; its entry is changed when it lands,
+stops or changes hands.
+
+<One paragraph: the stage the project is at (pre-production, first playable, beta), and what was settled to get here.>
+
+## How these notes are kept
+This file holds only what every session needs, whatever it works on. **Keep it under 200 lines.**
+- **One area's decisions are in that area's rule file** under `.claude/rules/` ("Where each area is written", below),
+  with the owner's own words and dates. Replaced decisions and long accounts go to `.claude/rule-history/<area>.md`, read
+  with Grep. A rule file is read into a session by itself when a file under its `paths` is opened. **Before answering
+  the owner about an area, or changing anything in it, read its rule file, whether or not it was loaded.**
+- **A new decision of the owner's is written into its area's rule file in the turn it is given**, with the owner's
+  words and the date (the skill `record-decision`); into this file only when every session must know it. When an area's
+  files move, its rule file's `paths` are changed with them.
+- **A procedure with steps is a skill** under `.claude/skills/<name>/SKILL.md` ("Procedures", below).
+- What is in hand, who has it and where its files are goes in the inventory, never here.
+
+## How the work is run
+The delivery flow: `.claude/rules/workflow.md` (the rules in force) and `docs/method.md` (why). In short:
+- one feature in build at a time, with a fixed budget; tasks of at most a day with done-when checks that only QA passes,
+  on the stage build;
+- a readiness review before each start; a retrospective after each feature;
+- the team is <three> sessions: lead, builder, QA<, design>; roles on the list (`node tools/feat.mjs status`);
+- each piece of work states a model and an effort level; at most two helpers per session;
+- show first, look before measuring, evidence not estimates; four rounds on one problem, then the owner.
+- **Every tab is summarised automatically at a window of <215,000> tokens.** After a summary, before anything else: read
+  your hand-over in `reports/team/handover/` and run `node tools/feat.mjs next`.
+
+## The product's code
+<Where the code is (`app/`, `src/`), how to build and run it, the nightly checks:>
+- Checks before a stage publish: `<npm test>`, `<npm run typecheck>`, `<npm run smoke>`, `<the layout audit>`.
+- **Target device sizes:** <for example: phone 390x844 upright and 844x390 sideways; desktop 1440x900>. Every screen at
+  each: no overlapping controls, nothing off screen, no sideways scrolling.
+- Stage: <the stage address>. Live: <the live address> (only the stage build, only on the owner's word;
+  `docs/stage-live.md`).
+
+## Decisions
+<Only the decisions every session needs, grouped (stack, data, performance, style), each with the owner's words and the
+date. Everything else lives in the area's rule file.>
+
+### Stack
+- <...>
+
+## Where each area is written
+Each line: the area, its file under `.claude/rules/`, the files that load it, and what it holds.
+- **The workflow:** `workflow.md` (`tools/`, `.claude/skills/`, `team-workflow.json`). The delivery flow, the team, what
+  the owner is shown, every session's standing rules.
+- **<Area>:** `<area>.md` (`<paths>`). <What it holds.>
+
+## Procedures (skills, `.claude/skills/`)
+- `/shape-feature`, `/build-task`, `/verify-task`, `/feature-retro`: the delivery flow.
+- `/high-stakes-review`, `/fresh-review`: reviews before a change is built or a result is shown.
+- `/helper-round`: a helper's brief with the standing rules.
+- `/heavy-job`: long jobs through one capped list (`tools/jobs.mjs`).
+- `/record-decision`: the owner's answer into the rule files and the inventory in one safe commit (`tools/notes.py`).
+- <the project's own procedures>
+
+## Open items
+- <what is undecided and waits for the owner>

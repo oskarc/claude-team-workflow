@@ -1,0 +1,20 @@
+{
+  "deliveryDir": "reports/delivery",
+  "jobsDir": "build/jobs",
+  "stateDir": "build/team",
+  "kinds": {
+    "feature": "User-facing behaviour",
+    "ui": "Screens and hints",
+    "content": "Content and text",
+    "data": "Data and storage",
+    "art": "Art and assets",
+    "spec": "Spec text",
+    "tech": "Code under the product"
+  },
+  "maxBudgetH": 80,
+  "commitTrailer": "Co-Authored-By: Claude <noreply@anthropic.com>",
+  "push": false,
+  "ownerName": "the owner",
+  "jobsCap": 2,
+  "roleOverrides": {}
+}

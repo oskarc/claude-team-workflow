@@ -1,0 +1,14 @@
+{
+  "name": "claude-team-workflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A small team of Claude Code sessions run like a delivery team: skills, rules, docs, templates and tools.",
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node tools/selftest.mjs",
+    "status": "node tools/feat.mjs status",
+    "jobs": "node tools/jobs.mjs list"
+  }
+}
